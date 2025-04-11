@@ -49,6 +49,10 @@
             color: white;
         }
 
+        .bookings .status {
+            font-weight: bold;
+        }
+
         .accept-btn, .decline-btn {
             padding: 8px 16px;
             border-radius: 4px;
@@ -92,7 +96,7 @@
     <div class="dashboard-container">
         <h2>Upcoming Bookings</h2>
 
-        <!-- Example of table displaying bookings (dynamic) -->
+        <!-- Bookings Table -->
         <div class="bookings">
             <table id="bookings-table">
                 <tr>
@@ -101,6 +105,7 @@
                     <th>Room Type</th>
                     <th>Check-in Date</th>
                     <th>Check-out Date</th>
+                    <th>Number of Days</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
@@ -108,4 +113,94 @@
         </div>
 
         <!-- Log out button -->
-        <button
+        <button class="logout-btn" onclick="logOut()">Log Out</button>
+    </div>
+
+    <script>
+        // Check if user is logged in, otherwise redirect to login page
+        if (!localStorage.getItem('isLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+
+        // Dummy bookings data (this could be fetched from a backend in a real application)
+        const bookings = [
+            { id: '#001', guest: 'John Doe', room: 'Deluxe Room', checkIn: '2025-05-01', checkOut: '2025-05-07', status: 'Pending' },
+            { id: '#002', guest: 'Jane Smith', room: 'Standard Room', checkIn: '2025-06-10', checkOut: '2025-06-15', status: 'Pending' },
+            { id: '#003', guest: 'Mark Johnson', room: 'Economy Room', checkIn: '2025-07-01', checkOut: '2025-07-05', status: 'Pending' }
+        ];
+
+        // Function to calculate the number of days between check-in and check-out
+        function calculateDays(checkInDate, checkOutDate) {
+            const checkIn = new Date(checkInDate);
+            const checkOut = new Date(checkOutDate);
+            const timeDifference = checkOut - checkIn;
+            const daysDifference = timeDifference / (1000 * 3600 * 24); // Convert from milliseconds to days
+            return daysDifference;
+        }
+
+        // Function to render bookings in the table
+        function renderBookings() {
+            const table = document.getElementById('bookings-table');
+            table.innerHTML = `
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Guest Name</th>
+                    <th>Room Type</th>
+                    <th>Check-in Date</th>
+                    <th>Check-out Date</th>
+                    <th>Number of Days</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            `;
+
+            bookings.forEach(booking => {
+                const daysStay = calculateDays(booking.checkIn, booking.checkOut);
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${booking.id}</td>
+                    <td>${booking.guest}</td>
+                    <td>${booking.room}</td>
+                    <td>${booking.checkIn}</td>
+                    <td>${booking.checkOut}</td>
+                    <td>${daysStay} days</td>
+                    <td><span class="status">${booking.status}</span></td>
+                    <td>
+                        <button class="accept-btn" onclick="acceptBooking('${booking.id}')">Accept</button>
+                        <button class="decline-btn" onclick="declineBooking('${booking.id}')">Decline</button>
+                    </td>
+                `;
+                table.appendChild(row);
+            });
+        }
+
+        // Function to handle accepting a booking
+        function acceptBooking(bookingId) {
+            const booking = bookings.find(b => b.id === bookingId);
+            if (booking) {
+                booking.status = 'Accepted';
+                renderBookings(); // Re-render the table with updated status
+            }
+        }
+
+        // Function to handle declining a booking
+        function declineBooking(bookingId) {
+            const booking = bookings.find(b => b.id === bookingId);
+            if (booking) {
+                booking.status = 'Declined';
+                renderBookings(); // Re-render the table with updated status
+            }
+        }
+
+        // Call renderBookings to populate the table initially
+        renderBookings();
+
+        // Log out function
+        function logOut() {
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'login.html'; // Redirect to login page
+        }
+    </script>
+
+</body>
+</html>
