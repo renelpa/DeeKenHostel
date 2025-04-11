@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Status - DeeKen Hostel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2575fc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .booking-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .booking-item h4 {
+            margin: 0;
+        }
+
+        .status {
+            padding: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .accepted {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .declined {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .actions button {
+            background-color: #2575fc;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .actions button:hover {
+            background-color: #1d5fd8;
+        }
+
+        .actions button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Booking Status</h1>
+        <p>Manage your current bookings below.</p>
+    </header>
+
+    <div class="container">
+        <div id="booking-list"></div>
+    </div>
+
+    <script>
+        // Simulating a list of bookings stored in localStorage
+        const bookings = [
+            {
+                name: "John Doe",
+                guests: 2,
+                dates: "April 15 - April 17",
+                status: "accepted"
+            },
+            {
+                name: "Jane Smith",
+                guests: 3,
+                dates: "April 20 - April 22",
+                status: "declined"
+            },
+            {
+                name: "David Johnson",
+                guests: 1,
+                dates: "April 23 - April 25",
+                status: "pending"
+            }
+        ];
+
+        // Function to render booking list
+        function renderBookings() {
+            const bookingList = document.getElementById('booking-list');
+            bookingList.innerHTML = ''; // Clear previous bookings
+
+            bookings.forEach((booking, index) => {
+                const bookingElement = document.createElement('div');
+                bookingElement.classList.add('booking-item');
+
+                bookingElement.innerHTML = `
+                    <div>
+                        <h4>${booking.name}</h4>
+                        <p>Guests: ${booking.guests} | Dates: ${booking.dates}</p>
+                    </div>
+                    <div class="status ${booking.status}">
+                        ${booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}
+                    </div>
+                    <div class="actions">
+                        <button onclick="updateBookingStatus(${index}, 'accepted')" ${booking.status === 'pending' ? '' : 'disabled'}>Accept</button>
+                        <button onclick="updateBookingStatus(${index}, 'declined')" ${booking.status === 'pending' ? '' : 'disabled'}>Decline</button>
+                    </div>
+                `;
+
+                bookingList.appendChild(bookingElement);
+            });
+        }
+
+        // Function to update booking status
+        function updateBookingStatus(index, status) {
+            bookings[index].status = status;
+            renderBookings();
+            alert(`Booking status for ${bookings[index].name} updated to ${status}`);
+        }
+
+        // Initial render of bookings
+        renderBookings();
+    </script>
+
+</body>
+
+</html>
