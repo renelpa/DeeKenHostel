@@ -44,18 +44,35 @@
             padding: 20px;
         }
 
-        .booking-item {
+        .booking-box {
             display: flex;
             justify-content: space-between;
-            padding: 10px;
-            background-color: #f8f9fa;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            transition: transform 0.3s ease;
         }
 
-        .booking-item h4 {
+        .booking-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .booking-box .info {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .booking-box h4 {
             margin: 0;
+            font-size: 1.6rem;
+            color: #333;
+        }
+
+        .booking-box p {
+            font-size: 1.1rem;
+            color: #666;
         }
 
         .status {
@@ -72,11 +89,12 @@
         .actions {
             display: flex;
             align-items: center;
+            font-size: 1.1rem;
+            color: #333;
         }
 
         .actions p {
             margin-right: 20px;
-            font-size: 1.1rem;
         }
 
         .actions button {
@@ -96,6 +114,12 @@
         .actions button:disabled {
             background-color: #ccc;
             cursor: not-allowed;
+        }
+
+        .booking-box .room-info {
+            font-size: 1rem;
+            color: #2575fc;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -121,6 +145,7 @@
                 guests: 2,
                 checkinDate: "April 15, 2025",
                 checkoutDate: "April 17, 2025",
+                room: "Room 2",
                 status: "accepted"
             },
             {
@@ -128,6 +153,7 @@
                 guests: 3,
                 checkinDate: "April 20, 2025",
                 checkoutDate: "April 22, 2025",
+                room: "Room 3",
                 status: "declined"
             },
             {
@@ -135,6 +161,7 @@
                 guests: 1,
                 checkinDate: "April 23, 2025",
                 checkoutDate: "April 25, 2025",
+                room: "Room 4",
                 status: "accepted"
             }
         ];
@@ -153,18 +180,22 @@
 
             acceptedBookings.forEach((booking) => {
                 const bookingElement = document.createElement('div');
-                bookingElement.classList.add('booking-item');
+                bookingElement.classList.add('booking-box');
 
                 bookingElement.innerHTML = `
-                    <div>
+                    <div class="info">
                         <h4>${booking.name}</h4>
                         <p>Guests: ${booking.guests}</p>
+                        <p><strong>Room:</strong> ${booking.room}</p>
                     </div>
                     <div class="status accepted">
                         Accepted
                     </div>
                     <div class="actions">
                         <p><strong>Stay Dates:</strong> ${booking.checkinDate} to ${booking.checkoutDate}</p>
+                    </div>
+                    <div class="room-info">
+                        <p><strong>Room Status:</strong> Available</p>
                     </div>
                 `;
 
