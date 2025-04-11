@@ -4,10 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Owner Dashboard - DeeKen Hostel</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: Arial, sans-serif;
       background-color: #f4f6f9;
       margin: 0;
       padding: 0;
@@ -25,126 +24,165 @@
       margin: 20px auto;
       padding: 20px;
       background: white;
-      border-radius: 8px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
     h2 {
+      margin-top: 30px;
       color: #333;
-      margin-bottom: 15px;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
+    .booking, .room-status {
       margin-bottom: 30px;
     }
 
-    th, td {
-      padding: 10px;
-      border: 1px solid #ccc;
-      text-align: center;
+    .booking-item {
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
     }
 
-    th {
-      background-color: #f1f1f1;
+    button {
+      padding: 6px 12px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
     }
 
-    select, input[type="file"] {
-      padding: 6px;
+    .accept {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .decline {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .room-status-control {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+    }
+
+    select {
+      padding: 5px;
     }
 
     .logout-btn {
-      margin-top: 30px;
-      padding: 10px 20px;
-      background: #e74c3c;
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .room-image-preview {
-      width: 100px;
-      height: auto;
-      margin-top: 10px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #fff;
+      color: #2575fc;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
   <header>
+    <a href="index.html" class="logout-btn">Logout</a>
     <h1>Owner Dashboard</h1>
   </header>
 
   <div class="container">
+    <!-- Booking Requests -->
+    <section class="booking">
+      <h2>Pending Bookings</h2>
+      <div id="bookingList"></div>
+    </section>
 
-    <!-- Room Status Management -->
-    <h2>Update Room Status</h2>
-    <table>
-      <tr>
-        <th>Room Name</th>
-        <th>Status</th>
-      </tr>
-      <tr>
-        <td>Room A</td>
-        <td>
-          <select onchange="updateRoomStatus('Room A', this.value)">
-            <option value="Vacant">Vacant</option>
-            <option value="Booked">Booked</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td>Room B</td>
-        <td>
-          <select onchange="updateRoomStatus('Room B', this.value)">
-            <option value="Vacant">Vacant</option>
-            <option value="Booked">Booked</option>
-          </select>
-        </td>
-      </tr>
-    </table>
+    <!-- Room Status Control -->
+    <section class="room-status">
+      <h2>Room Status Control</h2>
 
-    <!-- Upload Room Images -->
-    <h2>Upload Room Images</h2>
-    <input type="file" accept="image/*" onchange="previewImage(event)">
-    <img id="preview" class="room-image-preview" />
+      <div class="room-status-control">
+        <label for="room1">Room 1:</label>
+        <select id="room1" onchange="updateRoomStatus('room1')">
+          <option value="Vacant">Vacant</option>
+          <option value="Booked">Booked</option>
+        </select>
+      </div>
 
-    <button onclick="uploadImage()">Upload Image</button>
+      <div class="room-status-control">
+        <label for="room3">Room 3:</label>
+        <select id="room3" onchange="updateRoomStatus('room3')">
+          <option value="Vacant">Vacant</option>
+          <option value="Booked">Booked</option>
+        </select>
+      </div>
 
-    <!-- Logout Button -->
-    <br /><br />
-    <button class="logout-btn" onclick="logout()">Logout</button>
+      <div class="room-status-control">
+        <label for="room4">Room 4:</label>
+        <select id="room4" onchange="updateRoomStatus('room4')">
+          <option value="Vacant">Vacant</option>
+          <option value="Booked">Booked</option>
+        </select>
+      </div>
+    </section>
   </div>
 
   <script>
-    function updateRoomStatus(roomName, status) {
-      console.log(`Room ${roomName} set to ${status}`);
-      // Later: Send to backend using fetch/AJAX
+    const sampleBookings = [
+      { name: "John Doe", guests: 2, checkIn: "2025-05-01", checkOut: "2025-05-03" },
+      { name: "Jane Smith", guests: 3, checkIn: "2025-05-04", checkOut: "2025-05-06" }
+    ];
+
+    function loadBookings() {
+      const list = document.getElementById("bookingList");
+      list.innerHTML = "";
+
+      sampleBookings.forEach((booking, index) => {
+        const item = document.createElement("div");
+        item.className = "booking-item";
+        item.innerHTML = `
+          <p><strong>Name:</strong> ${booking.name}</p>
+          <p><strong>Guests:</strong> ${booking.guests}</p>
+          <p><strong>Dates:</strong> ${booking.checkIn} to ${booking.checkOut}</p>
+          <button class="accept" onclick="acceptBooking(${index})">Accept</button>
+          <button class="decline" onclick="declineBooking(${index})">Decline</button>
+        `;
+        list.appendChild(item);
+      });
     }
 
-    function previewImage(event) {
-      const reader = new FileReader();
-      reader.onload = function() {
-        const output = document.getElementById('preview');
-        output.src = reader.result;
-      };
-      reader.readAsDataURL(event.target.files[0]);
+    function acceptBooking(index) {
+      alert(`Booking accepted for ${sampleBookings[index].name}`);
+      localStorage.setItem("room1Status", "Booked"); // auto-book Room 1 for now
+      sampleBookings.splice(index, 1);
+      loadBookings();
     }
 
-    function uploadImage() {
-      const imageSrc = document.getElementById('preview').src;
-      if (imageSrc) {
-        // Later: Send image to backend via AJAX/fetch
-        alert("Image uploaded (simulated). It will show on the Rooms page.");
-        // Simulated save in localStorage:
-        localStorage.setItem("roomImage", imageSrc);
-      }
+    function declineBooking(index) {
+      alert(`Booking declined for ${sampleBookings[index].name}`);
+      sampleBookings.splice(index, 1);
+      loadBookings();
     }
 
-    function logout() {
-      localStorage.removeItem('isLoggedIn');
-      window.location.href = "login.html";
+    function updateRoomStatus(roomId) {
+      const status = document.getElementById(roomId).value;
+      localStorage.setItem(`${roomId}Status`, status);
     }
+
+    function setDefaultStatus() {
+      const rooms = ["room1", "room3", "room4"];
+      rooms.forEach(room => {
+        const saved = localStorage.getItem(`${room}Status`);
+        if (saved) {
+          document.getElementById(room).value = saved;
+        }
+      });
+    }
+
+    window.onload = () => {
+      loadBookings();
+      setDefaultStatus();
+    };
   </script>
 </body>
 </html>
