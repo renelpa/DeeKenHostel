@@ -1,3 +1,4 @@
+<!-- dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,6 +49,23 @@
             color: white;
         }
 
+        .accept-btn, .decline-btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .accept-btn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .decline-btn {
+            background-color: #e74c3c;
+            color: white;
+        }
+
         .logout-btn {
             background-color: #e74c3c;
             color: white;
@@ -74,51 +92,20 @@
     <div class="dashboard-container">
         <h2>Upcoming Bookings</h2>
 
-        <!-- Example of table displaying bookings (static for now) -->
+        <!-- Example of table displaying bookings (dynamic) -->
         <div class="bookings">
-            <table>
+            <table id="bookings-table">
                 <tr>
                     <th>Booking ID</th>
                     <th>Guest Name</th>
                     <th>Room Type</th>
                     <th>Check-in Date</th>
                     <th>Check-out Date</th>
-                </tr>
-                <tr>
-                    <td>#001</td>
-                    <td>John Doe</td>
-                    <td>Deluxe Room</td>
-                    <td>2025-05-01</td>
-                    <td>2025-05-07</td>
-                </tr>
-                <tr>
-                    <td>#002</td>
-                    <td>Jane Smith</td>
-                    <td>Standard Room</td>
-                    <td>2025-06-10</td>
-                    <td>2025-06-15</td>
-                </tr>
-                <tr>
-                    <td>#003</td>
-                    <td>Mark Johnson</td>
-                    <td>Economy Room</td>
-                    <td>2025-07-01</td>
-                    <td>2025-07-05</td>
+                    <th>Status</th>
+                    <th>Actions</th>
                 </tr>
             </table>
         </div>
 
         <!-- Log out button -->
-        <button class="logout-btn" onclick="logOut()">Log Out</button>
-    </div>
-
-    <script>
-        // Simulate log out function
-        function logOut() {
-            // Redirect to login page when logging out
-            window.location.href = "login.html"; // Replace with your login page
-        }
-    </script>
-
-</body>
-</html>
+        <button
