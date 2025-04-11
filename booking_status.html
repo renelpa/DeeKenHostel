@@ -18,6 +18,24 @@
             color: white;
             padding: 20px;
             text-align: center;
+            position: relative;
+        }
+
+        header .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ffffff;
+            color: #2575fc;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        header .logout-btn:hover {
+            background-color: #eaeaea;
         }
 
         .container {
@@ -51,9 +69,14 @@
             color: #155724;
         }
 
-        .declined {
-            background-color: #f8d7da;
-            color: #721c24;
+        .actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .actions p {
+            margin-right: 20px;
+            font-size: 1.1rem;
         }
 
         .actions button {
@@ -81,7 +104,9 @@
 
     <header>
         <h1>Booking Status</h1>
-        <p>Manage your current bookings below.</p>
+        <p>Manage your accepted bookings below.</p>
+        <!-- Logout Button -->
+        <a href="index.html" class="logout-btn">Logout</a>
     </header>
 
     <div class="container">
@@ -94,55 +119,57 @@
             {
                 name: "John Doe",
                 guests: 2,
-                dates: "April 15 - April 17",
+                checkinDate: "April 15, 2025",
+                checkoutDate: "April 17, 2025",
                 status: "accepted"
             },
             {
                 name: "Jane Smith",
                 guests: 3,
-                dates: "April 20 - April 22",
+                checkinDate: "April 20, 2025",
+                checkoutDate: "April 22, 2025",
                 status: "declined"
             },
             {
                 name: "David Johnson",
                 guests: 1,
-                dates: "April 23 - April 25",
-                status: "pending"
+                checkinDate: "April 23, 2025",
+                checkoutDate: "April 25, 2025",
+                status: "accepted"
             }
         ];
 
-        // Function to render booking list
+        // Function to render accepted bookings only
         function renderBookings() {
             const bookingList = document.getElementById('booking-list');
             bookingList.innerHTML = ''; // Clear previous bookings
 
-            bookings.forEach((booking, index) => {
+            const acceptedBookings = bookings.filter(booking => booking.status === 'accepted');
+
+            // Check if there are any accepted bookings
+            if (acceptedBookings.length === 0) {
+                bookingList.innerHTML = `<p>No accepted bookings at the moment.</p>`;
+            }
+
+            acceptedBookings.forEach((booking) => {
                 const bookingElement = document.createElement('div');
                 bookingElement.classList.add('booking-item');
 
                 bookingElement.innerHTML = `
                     <div>
                         <h4>${booking.name}</h4>
-                        <p>Guests: ${booking.guests} | Dates: ${booking.dates}</p>
+                        <p>Guests: ${booking.guests}</p>
                     </div>
-                    <div class="status ${booking.status}">
-                        ${booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}
+                    <div class="status accepted">
+                        Accepted
                     </div>
                     <div class="actions">
-                        <button onclick="updateBookingStatus(${index}, 'accepted')" ${booking.status === 'pending' ? '' : 'disabled'}>Accept</button>
-                        <button onclick="updateBookingStatus(${index}, 'declined')" ${booking.status === 'pending' ? '' : 'disabled'}>Decline</button>
+                        <p><strong>Stay Dates:</strong> ${booking.checkinDate} to ${booking.checkoutDate}</p>
                     </div>
                 `;
 
                 bookingList.appendChild(bookingElement);
             });
-        }
-
-        // Function to update booking status
-        function updateBookingStatus(index, status) {
-            bookings[index].status = status;
-            renderBookings();
-            alert(`Booking status for ${bookings[index].name} updated to ${status}`);
         }
 
         // Initial render of bookings
