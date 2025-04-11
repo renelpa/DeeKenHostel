@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f6f9;
+      background-color: #f8f9fa;
       margin: 0;
       padding: 0;
     }
@@ -21,168 +21,166 @@
 
     .container {
       max-width: 1000px;
-      margin: 20px auto;
+      margin: 30px auto;
       padding: 20px;
-      background: white;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #2575fc;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #1d5fd8;
+    }
+
+    .section {
+      background-color: white;
+      padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      margin-top: 30px;
-      color: #333;
-    }
-
-    .booking, .room-status {
       margin-bottom: 30px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    .booking-status {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
     .booking-item {
-      border-bottom: 1px solid #ccc;
-      padding: 10px 0;
-    }
-
-    button {
-      padding: 6px 12px;
-      margin-right: 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .accept {
-      background-color: #28a745;
-      color: white;
-    }
-
-    .decline {
-      background-color: #dc3545;
-      color: white;
-    }
-
-    .room-status-control {
       display: flex;
       justify-content: space-between;
-      margin: 10px 0;
+      padding: 10px;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
 
-    select {
-      padding: 5px;
+    .booking-item h4 {
+      margin: 0;
     }
 
-    .logout-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background-color: #fff;
-      color: #2575fc;
-      padding: 8px 16px;
-      border-radius: 6px;
-      text-decoration: none;
+    .status {
+      padding: 10px;
+      font-size: 1.1rem;
       font-weight: bold;
+    }
+
+    .accepted {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .declined {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .actions button {
+      background-color: #2575fc;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .actions button:hover {
+      background-color: #1d5fd8;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <a href="index.html" class="logout-btn">Logout</a>
     <h1>Owner Dashboard</h1>
+    <p>Manage your hostel and view booking statuses</p>
   </header>
 
   <div class="container">
-    <!-- Booking Requests -->
-    <section class="booking">
-      <h2>Pending Bookings</h2>
-      <div id="bookingList"></div>
-    </section>
+    <!-- Button to view the status of bookings -->
+    <a href="booking_status.html" class="button">View Booking Status</a>
 
-    <!-- Room Status Control -->
-    <section class="room-status">
-      <h2>Room Status Control</h2>
+    <!-- Booking Status Section -->
+    <div class="section">
+      <h2>Current Bookings</h2>
+      <div class="booking-status">
+        <!-- Sample Booking 1 -->
+        <div class="booking-item">
+          <div>
+            <h4>John Doe</h4>
+            <p>Guests: 2 | Dates: April 15 - April 17</p>
+          </div>
+          <div class="status accepted">
+            Accepted
+          </div>
+          <div class="actions">
+            <button onclick="updateBookingStatus(1, 'declined')">Decline</button>
+          </div>
+        </div>
 
-      <div class="room-status-control">
-        <label for="room1">Room 1:</label>
-        <select id="room1" onchange="updateRoomStatus('room1')">
-          <option value="Vacant">Vacant</option>
-          <option value="Booked">Booked</option>
-        </select>
+        <!-- Sample Booking 2 -->
+        <div class="booking-item">
+          <div>
+            <h4>Jane Smith</h4>
+            <p>Guests: 3 | Dates: April 20 - April 22</p>
+          </div>
+          <div class="status declined">
+            Declined
+          </div>
+          <div class="actions">
+            <button onclick="updateBookingStatus(2, 'accepted')">Accept</button>
+          </div>
+        </div>
+
+        <!-- Sample Booking 3 -->
+        <div class="booking-item">
+          <div>
+            <h4>David Johnson</h4>
+            <p>Guests: 1 | Dates: April 23 - April 25</p>
+          </div>
+          <div class="status">
+            Pending
+          </div>
+          <div class="actions">
+            <button onclick="updateBookingStatus(3, 'accepted')">Accept</button>
+            <button onclick="updateBookingStatus(3, 'declined')">Decline</button>
+          </div>
+        </div>
+
+        <!-- Add more bookings dynamically in the future -->
       </div>
+    </div>
 
-      <div class="room-status-control">
-        <label for="room3">Room 3:</label>
-        <select id="room3" onchange="updateRoomStatus('room3')">
-          <option value="Vacant">Vacant</option>
-          <option value="Booked">Booked</option>
-        </select>
-      </div>
-
-      <div class="room-status-control">
-        <label for="room4">Room 4:</label>
-        <select id="room4" onchange="updateRoomStatus('room4')">
-          <option value="Vacant">Vacant</option>
-          <option value="Booked">Booked</option>
-        </select>
-      </div>
-    </section>
   </div>
 
   <script>
-    const sampleBookings = [
-      { name: "John Doe", guests: 2, checkIn: "2025-05-01", checkOut: "2025-05-03" },
-      { name: "Jane Smith", guests: 3, checkIn: "2025-05-04", checkOut: "2025-05-06" }
-    ];
+    function updateBookingStatus(bookingId, status) {
+      const statusText = status === 'accepted' ? 'Accepted' : 'Declined';
+      const statusElement = document.querySelectorAll('.booking-item')[bookingId - 1].querySelector('.status');
+      const actionButtons = document.querySelectorAll('.booking-item')[bookingId - 1].querySelector('.actions');
 
-    function loadBookings() {
-      const list = document.getElementById("bookingList");
-      list.innerHTML = "";
+      // Update the status
+      statusElement.textContent = statusText;
+      statusElement.className = 'status ' + (status === 'accepted' ? 'accepted' : 'declined');
 
-      sampleBookings.forEach((booking, index) => {
-        const item = document.createElement("div");
-        item.className = "booking-item";
-        item.innerHTML = `
-          <p><strong>Name:</strong> ${booking.name}</p>
-          <p><strong>Guests:</strong> ${booking.guests}</p>
-          <p><strong>Dates:</strong> ${booking.checkIn} to ${booking.checkOut}</p>
-          <button class="accept" onclick="acceptBooking(${index})">Accept</button>
-          <button class="decline" onclick="declineBooking(${index})">Decline</button>
-        `;
-        list.appendChild(item);
-      });
+      // Disable the action buttons after the booking has been processed
+      actionButtons.innerHTML = `<button disabled>${statusText}</button>`;
+
+      alert('Booking ' + bookingId + ' status updated to ' + statusText);
     }
-
-    function acceptBooking(index) {
-      alert(`Booking accepted for ${sampleBookings[index].name}`);
-      localStorage.setItem("room1Status", "Booked"); // auto-book Room 1 for now
-      sampleBookings.splice(index, 1);
-      loadBookings();
-    }
-
-    function declineBooking(index) {
-      alert(`Booking declined for ${sampleBookings[index].name}`);
-      sampleBookings.splice(index, 1);
-      loadBookings();
-    }
-
-    function updateRoomStatus(roomId) {
-      const status = document.getElementById(roomId).value;
-      localStorage.setItem(`${roomId}Status`, status);
-    }
-
-    function setDefaultStatus() {
-      const rooms = ["room1", "room3", "room4"];
-      rooms.forEach(room => {
-        const saved = localStorage.getItem(`${room}Status`);
-        if (saved) {
-          document.getElementById(room).value = saved;
-        }
-      });
-    }
-
-    window.onload = () => {
-      loadBookings();
-      setDefaultStatus();
-    };
   </script>
+
 </body>
 </html>
+
