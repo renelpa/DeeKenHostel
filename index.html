@@ -2,43 +2,61 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DeeKen Hostel</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header>
-    <a href="login.html" class="login-btn">Owner Login</a>
-    <h1>DeeKen Hostel</h1>
-    <p>Your comfort is our priority</p>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">DeeKen Hostel</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Rooms</a>
+      <a href="#">Amenities</a>
+      <a href="#">Contact</a>
+      <a href="#">Book Now</a>
+    </nav>
   </header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="rooms.html">Rooms</a>
-    <a href="amenities.html">Amenities</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+
+  <!-- Hero Section -->
   <section class="hero">
-    <h2>Experience the Best Stay in Caramoan</h2>
-    <p>Discover comfort, convenience, and a friendly atmosphere at DeeKen Hostel.</p>
-    <div class="info-buttons">
-      <a href="rooms.html">View Rooms</a>
-      <a href="book.html">Book Now</a>
-      <a href="contact.html">Get in Touch</a>
+    <h1>Find Your Perfect Stay in Caramoan</h1>
+    <form class="search-form">
+      <input type="text" placeholder="Enter location or hostel name" />
+      <input type="date" />
+      <input type="date" />
+      <button type="submit">Search</button>
+    </form>
+  </section>
+
+  <!-- Featured Hostels -->
+  <section class="featured">
+    <h2>Featured Hostels</h2>
+    <div class="hostel-grid">
+      <div class="hostel-card">
+        <img src="https://via.placeholder.com/300x200" alt="Hostel 1" />
+        <h3>Borebor Hostel</h3>
+        <p>Located in Tawog - Affordable and cozy.</p>
+      </div>
+      <div class="hostel-card">
+        <img src="https://via.placeholder.com/300x200" alt="Hostel 2" />
+        <h3>Bikal Hostel</h3>
+        <p>Near Bikal Beach and markets.</p>
+      </div>
+      <div class="hostel-card">
+        <img src="https://via.placeholder.com/300x200" alt="Hostel 3" />
+        <h3>CarCC Inn</h3>
+        <p>Walking distance to Caramoan Community College.</p>
+      </div>
     </div>
   </section>
+
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 DeeKen Hostel. All rights reserved.</p>
   </footer>
-  <div id="fb-root"></div>
-  <div id="fb-customer-chat" class="fb-customerchat messenger-button"></div>
-  <script>
-    var chatbox = document.getElementById('fb-customer-chat');
-    chatbox.setAttribute("page_id", "YOUR_PAGE_ID");
-    chatbox.setAttribute("attribution", "biz_inbox");
-  </script>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js"></script>
+
 </body>
 </html>
