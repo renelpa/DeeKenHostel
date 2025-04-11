@@ -1,163 +1,98 @@
-/* Reset & Base Styles */
+/* Basic Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
 }
-
 body {
-  background-color: #fffaf5;
-  color: #2b2b2b;
+  font-family: Arial, sans-serif;
   line-height: 1.6;
-}
-
-/* Header */
-header {
-  background: linear-gradient(to right, #6a11cb, #2575fc);
-  color: white;
-  padding: 60px 20px;
-  text-align: center;
-  position: relative;
-}
-
-header h1 {
-  font-size: 3.5rem;
-  margin-bottom: 10px;
-}
-
-header p {
-  font-size: 1.2rem;
-}
-
-.login-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: #ffffff;
-  color: #2575fc;
-  padding: 10px 18px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-.login-btn:hover {
-  background-color: #eaeaea;
-}
-
-/* Navigation Bar */
-nav {
-  background-color: #2e2e2e;
-  padding: 15px 0;
-  text-align: center;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  margin: 0 15px;
-  font-size: 1.1rem;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #ffcc00;
-}
-
-/* Hero Section */
-.hero {
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.hero h2 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
   color: #333;
 }
-
-.hero p {
-  font-size: 1.1rem;
-  margin-bottom: 30px;
-}
-
-/* Info Buttons */
-.info-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.info-buttons a {
-  background-color: #2575fc;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
+a {
   text-decoration: none;
-  font-size: 1rem;
-  transition: background-color 0.3s;
+  color: #fff;
 }
 
-.info-buttons a:hover {
-  background-color: #1d5fd8;
+/* Navbar */
+.navbar {
+  background-color: #004c99;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  align-items: center;
+}
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.navbar nav a {
+  margin-left: 20px;
 }
 
-/* Page Content Styling */
-main {
-  padding: 40px 20px;
-  max-width: 800px;
-  margin: auto;
-}
-
-main h1 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-main p, main li {
-  font-size: 1.1rem;
-  margin-bottom: 15px;
-}
-
-form input,
-form select,
-form button {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-form button {
-  background-color: #2575fc;
+/* Hero */
+.hero {
+  background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
   color: white;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.search-form {
+  margin-top: 1rem;
+}
+.search-form input, .search-form button {
+  padding: 0.7rem;
+  margin: 0.3rem;
   border: none;
+  border-radius: 5px;
+}
+.search-form button {
+  background-color: #0073e6;
+  color: white;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-form button:hover {
-  background-color: #1d5fd8;
+/* Featured Hostels */
+.featured {
+  padding: 2rem;
+  background-color: #f4f4f4;
+}
+.featured h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.hostel-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.hostel-card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 300px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.hostel-card img {
+  width: 100%;
+}
+.hostel-card h3 {
+  padding: 0.5rem;
+}
+.hostel-card p {
+  padding: 0 0.5rem 1rem;
 }
 
 /* Footer */
 footer {
-  background-color: #2e2e2e;
-  color: white;
   text-align: center;
-  padding: 30px 0;
-  margin-top: 60px;
-}
-
-/* Messenger Button */
-.messenger-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
+  background-color: #004c99;
+  color: white;
+  padding: 1rem;
 }
