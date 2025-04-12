@@ -24,6 +24,7 @@
     .menu-icon {
       font-size: 1.5rem;
       cursor: pointer;
+      z-index: 1100;
     }
 
     /* Sidebar */
@@ -126,11 +127,11 @@
     }
   </style>
 </head>
-<body>
+<body onclick="handleBodyClick(event)">
 
   <header>
     <h1>My Hostel</h1>
-    <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+    <span class="menu-icon" onclick="toggleMenu(event)">&#9776;</span>
   </header>
 
   <div id="sidebar" class="sidebar">
@@ -144,7 +145,7 @@
     </div>
   </div>
 
-  <div class="content" onclick="hideSidebar()">
+  <div class="content">
     <h2>Welcome to My Hostel</h2>
     <p>Comfort, convenience, and budget-friendly lodging. Book now and enjoy your stay!</p>
   </div>
@@ -169,15 +170,21 @@
   <script>
     let sidebarOpen = false;
 
-    function toggleMenu() {
+    function toggleMenu(event) {
+      event.stopPropagation(); // Prevent closing when clicking the button
       const sidebar = document.getElementById("sidebar");
       sidebarOpen = !sidebarOpen;
       sidebar.style.width = sidebarOpen ? "33.33%" : "0";
     }
 
-    function hideSidebar() {
+    function handleBodyClick(event) {
       const sidebar = document.getElementById("sidebar");
-      if (sidebarOpen) {
+      const menuIcon = document.querySelector('.menu-icon');
+      if (
+        sidebarOpen &&
+        !sidebar.contains(event.target) &&
+        !menuIcon.contains(event.target)
+      ) {
         sidebar.style.width = "0";
         sidebarOpen = false;
       }
@@ -191,7 +198,6 @@
       document.getElementById("loginModal").style.display = "none";
     }
 
-    // Close modal if clicked outside the login box
     window.onclick = function(event) {
       const modal = document.getElementById("loginModal");
       if (event.target == modal) {
