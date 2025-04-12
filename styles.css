@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background-image: url('https://images.unsplash.com/photo-1555529771-c4d88f9c8f7e');
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+.content {
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+header h1 {
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header p {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.blur-box {
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+}
+
+.sidebar .logo {
+    font-size: 1.8em;
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    margin: 10px 0;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+.sidebar a:hover {
+    color: #ff6f61;
+}
+
+.menu-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+form input, form textarea, form select, form button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+form button {
+    background-color: #ff6f61;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #ff3b2f;
+}
+
+.rooms-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.room {
+    text-align: center;
+    width: 30%;
+}
+
+.room img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
