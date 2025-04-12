@@ -1,40 +1,134 @@
-/* General Reset and Defaults */
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body, html {
+  font-family: 'Arial', sans-serif;
+  height: 100%;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
 
-{ margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+/* Header */
+header {
+  background-color: #b2e0f7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+.logo {
+  font-family: 'Cursive';
+  font-size: 1.8rem;
+  color: #003f5c;
+}
+.menu-toggle {
+  font-size: 2rem;
+  cursor: pointer;
+}
 
+/* Sidebar Menu */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.98);
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 90px;
+  z-index: 999;
+}
+.side-menu.open {
+  width: 28%;
+}
+.side-menu a {
+  display: block;
+  padding: 12px 30px;
+  color: #333;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+.side-menu a:hover,
+.side-menu a.active {
+  background: #dff3ff;
+  font-weight: bold;
+}
 
-body, html { height: 100%; scroll-behavior: smooth; background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover; background-attachment: fixed; }
+/* Login Form */
+.auth-form {
+  padding: 1rem 2rem;
+  border-top: 1px solid #ccc;
+  margin-top: 1rem;
+}
+.auth-form input {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.auth-form button {
+  padding: 0.5rem 1rem;
+  background: #4fc3f7;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+.auth-form h3 {
+  margin-bottom: 0.5rem;
+}
 
-/* Header */ header { background: linear-gradient(to right, #a8dadc, #457b9d); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+/* Main Content */
+.main {
+  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center / cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding-top: 100px;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+.main-content {
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+.blur-box {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
 
-.logo { font-family: 'Brush Script MT', cursive; font-size: 2.2rem; color: white; letter-spacing: 1px; }
+/* Footer */
+footer {
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
 
-.menu-toggle { font-size: 2rem; cursor: pointer; color: white; }
-
-/* Side Menu */ .side-menu { height: 100%; width: 0; position: fixed; top: 0; right: 0; background-color: rgba(255, 255, 255, 0.95); overflow-x: hidden; transition: 0.3s; padding-top: 150px; z-index: 999; box-shadow: -2px 0 5px rgba(0,0,0,0.2); }
-
-.side-menu a { padding: 12px 30px; display: block; font-size: 1.1rem; text-decoration: none; color: #333; }
-
-.side-menu a:hover, .side-menu a.active { background-color: #e0f2f1; font-weight: bold; border-left: 4px solid #457b9d; }
-
-.auth-form { padding: 1.5rem 2rem; border-top: 1px solid #ccc; background-color: #f9f9f9; margin: 2rem; border-radius: 8px; }
-
-.auth-form h3 { font-size: 1.2rem; margin-bottom: 1rem; color: #333; }
-
-.auth-form input { display: block; margin-bottom: 1rem; padding: 0.6rem; width: 100%; border-radius: 5px; border: 1px solid #ccc; }
-
-.auth-form button { padding: 0.6rem 1rem; background-color: #457b9d; color: white; border: none; border-radius: 5px; cursor: pointer; }
-
-/* Main Content */ main { padding-top: 120px; }
-
-.section-box { margin: 2rem; padding: 2rem; background-color: rgba(255, 255, 255, 0.7); border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
-
-.section-box h1, .section-box h2 { color: #1d3557; margin-bottom: 1rem; }
-
-.section-box p, .section-box ul { color: #333; font-size: 1.1rem; line-height: 1.6; }
-
-.footer { background-color: rgba(0, 0, 0, 0.6); color: white; text-align: center; padding: 1rem; margin-top: 3rem; }
-
-/* Responsive Design */ @media (max-width: 768px) { .section-box { margin: 1rem; padding: 1rem; } .side-menu.open { width: 70%; } }
-
-@media (min-width: 769px) { .side-menu.open { width: 28%; } }
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .side-menu.open {
+    width: 70%;
+  }
+  .blur-box {
+    padding: 1rem;
+  }
+}
