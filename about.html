@@ -1,80 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About | DeeKen Hostel</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - DeeKen Hostel</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="logo">DeeKen Hostel</div>
-    <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
-  </header>
 
-  <div id="sideMenu" class="side-menu">
-    <a href="index.html">Homepage</a>
-    <a href="about.html" class="active">About</a>
-    <a href="#rooms">Rooms</a>
-    <a href="#booking">Booking</a>
-    <a href="#contact">Contact</a>
-    <div class="auth-form">
-      <h3>Owner Login</h3>
-      <input type="text" placeholder="Username">
-      <input type="password" placeholder="Password">
-      <button>Login</button>
-    </div>
+<header>
+  <div class="logo">DeeKen Hostel</div>
+  <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+</header>
+
+<nav id="sideMenu" class="side-menu">
+  <a href="index.html">Homepage</a>
+  <a href="about.html" class="active">About</a>
+  <a href="#rooms">Rooms</a>
+  <a href="#booking">Booking</a>
+  <a href="#contact">Contact</a>
+  <div class="auth-form">
+    <h3>Owner Login</h3>
+    <input type="text" placeholder="Username" />
+    <input type="password" placeholder="Password" />
+    <button>Login</button>
   </div>
+</nav>
 
-  <main onclick="closeMenu()">
-    <section class="section-box">
+<main class="main about" onclick="closeMenu()">
+  <section class="main-content">
+    <div class="blur-box">
       <h1>About DeeKen Hostel</h1>
-      <p>DeeKen Hostel is a serene escape located in the beautiful town of Caramoan. Built with comfort and coastal charm in mind, we offer an affordable and relaxing place to stay for tourists, adventurers, and families.</p>
-    </section>
-
-    <section class="section-box">
+      <p>Founded in the heart of Caramoan, DeeKen Hostel offers cozy accommodations, breathtaking views, and a gateway to unforgettable adventures.</p>
+    </div>
+    <div class="blur-box">
       <h2>Our Mission</h2>
-      <p>To provide every guest a warm and memorable experience with personalized service, comfort, and genuine hospitality.</p>
+      <p>To give every guest a warm Bicolano welcome, an affordable stay, and a memorable experience through nature and hospitality.</p>
+    </div>
+    <div class="blur-box">
       <h2>Our Vision</h2>
-      <p>To be the most loved local hostel in Caramoan, where guests return for peace, nature, and Filipino warmth.</p>
-    </section>
-
-    <section class="section-box">
-      <h2>Why Choose Us?</h2>
+      <p>To be one of the top beach hostels in the Bicol Region, known for comfort, cleanliness, and community connection.</p>
+    </div>
+    <div class="blur-box">
+      <h2>Why Stay With Us?</h2>
       <ul>
-        <li>Beachfront access</li>
-        <li>Island hopping tour assistance</li>
-        <li>Affordable and clean rooms</li>
-        <li>Free breakfast and WiFi</li>
-        <li>Local staff with a heart for service</li>
+        <li>🌅 Beachfront Location</li>
+        <li>🛏️ Clean & Cozy Rooms</li>
+        <li>🍽️ Local Food Available</li>
+        <li>🛵 Motorbike Rentals</li>
+        <li>👨‍👩‍👧‍👦 Friendly Local Staff</li>
       </ul>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
 
-  <footer class="footer">
-    &copy; 2025 DeeKen Hostel. All rights reserved.
-  </footer>
+<footer>
+  &copy; 2025 DeeKen Hostel. All rights reserved.
+</footer>
 
-  <script>
-    const menu = document.getElementById("sideMenu");
-    const links = document.querySelectorAll(".side-menu a");
+<script>
+  const menu = document.getElementById("sideMenu");
+  function toggleMenu() {
+    menu.classList.toggle("open");
+  }
+  function closeMenu() {
+    menu.classList.remove("open");
+  }
 
-    function toggleMenu() {
-      menu.classList.toggle("open");
+  // Highlight current page
+  const links = document.querySelectorAll('.side-menu a');
+  links.forEach(link => {
+    if (link.href === window.location.href) {
+      link.classList.add('active');
     }
+  });
+</script>
 
-    function closeMenu() {
-      if (menu.classList.contains("open")) {
-        menu.classList.remove("open");
-      }
-    }
-
-    links.forEach(link => {
-      link.addEventListener("click", () => {
-        links.forEach(el => el.classList.remove("active"));
-        link.classList.add("active");
-      });
-    });
-  </script>
 </body>
 </html>
