@@ -1,71 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DeeKen Hostel</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeeKen Hostel</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://www.example.com/seamountains.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            height: 100vh;
+            padding-top: 50px;
+        }
+
+        /* Header */
+        header {
+            background-color: lightblue;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        /* Menu Button */
+        .menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Sidebar */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            right: -23%;
+            width: 23%;
+            height: 100%;
+            background-color: #333;
+            padding-top: 50px;
+            transition: right 0.3s ease;
+            box-shadow: -3px 0px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        #sidebar a {
+            display: block;
+            padding: 15px;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        #sidebar a:hover {
+            background-color: #555;
+        }
+
+        #sidebar a.active {
+            background-color: #007BFF;
+        }
+
+        /* Content Area */
+        .content {
+            margin-top: 100px;
+            padding: 20px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">DeeKen Hostel</div>
-  <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+    <h1>DeeKen Hostel</h1>
+    <div class="menu-btn" onclick="toggleSidebar()">&#9776;</div>
 </header>
 
-<nav id="sideMenu" class="side-menu">
-  <a href="index.html" class="active">Homepage</a>
-  <a href="about.html">About</a>
-  <a href="#rooms">Rooms</a>
-  <a href="#booking">Booking</a>
-  <a href="#contact">Contact</a>
-  <div class="auth-form">
-    <h3>Owner Login</h3>
-    <input type="text" placeholder="Username" />
-    <input type="password" placeholder="Password" />
-    <button>Login</button>
-  </div>
-</nav>
+<!-- Sidebar Menu -->
+<div id="sidebar">
+    <a href="index.html" id="home-link" class="active">Home</a>
+    <a href="about.html" id="about-link">About</a>
+    <a href="rooms.html" id="rooms-link">Rooms</a>
+    <a href="booking.html" id="booking-link">Booking</a>
+    <a href="contact.html" id="contact-link">Contact</a>
+</div>
 
-<main class="main home" onclick="closeMenu()">
-  <section class="main-content">
-    <div class="blur-box">
-      <h1>Welcome to Caramoan!</h1>
-      <p>Discover the best experiences and natural wonders in Caramoan.</p>
-    </div>
-    <div class="blur-box">
-      <h2>Things to Do</h2>
-      <ul>
-        <li>🏝️ Island Hopping at Matukad, Lahos, and Manlawi</li>
-        <li>🌊 Relaxing on Cotivas and Lahuy Beaches</li>
-        <li>🧗 Rock Climbing and Spelunking</li>
-        <li>⛪ Cultural Visit to the Grotto and Old Churches</li>
-        <li>🍽️ Enjoy Bicolano cuisine like Laing and Kinunot</li>
-      </ul>
-    </div>
-  </section>
-</main>
+<!-- Main Content -->
+<div class="content">
+    <h2>Welcome to DeeKen Hostel!</h2>
+    <p>Your gateway to the beautiful Caramoan.</p>
+</div>
 
 <footer>
-  &copy; 2025 DeeKen Hostel. All rights reserved.
+    <p>&copy; 2025 DeeKen Hostel. All rights reserved.</p>
 </footer>
 
 <script>
-  const menu = document.getElementById("sideMenu");
-  function toggleMenu() {
-    menu.classList.toggle("open");
-  }
-  function closeMenu() {
-    menu.classList.remove("open");
-  }
-
-  // Highlight current page
-  const links = document.querySelectorAll('.side-menu a');
-  links.forEach(link => {
-    if (link.href === window.location.href) {
-      link.classList.add('active');
+    // Toggle sidebar visibility
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar.style.right === '0px') {
+            sidebar.style.right = '-23%';
+        } else {
+            sidebar.style.right = '0px';
+        }
     }
-  });
+
+    // Close sidebar if clicked outside or on menu button
+    window.onclick = function(event) {
+        const sidebar = document.getElementById('sidebar');
+        const menuBtn = document.querySelector('.menu-btn');
+        const sidebarLinks = document.querySelectorAll('#sidebar a');
+
+        if (!sidebar.contains(event.target) && event.target !== menuBtn) {
+            sidebar.style.right = '-23%';
+        }
+
+        // Highlight the active page
+        sidebarLinks.forEach(link => {
+            if (link.classList.contains('active')) {
+                link.classList.remove('active');
+            }
+        });
+
+        // Add 'active' class to the clicked link
+        if (event.target.tagName === 'A') {
+            event.target.classList.add('active');
+        }
+    }
 </script>
 
 </body>
