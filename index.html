@@ -3,99 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hostel Homepage</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #ffffff;
-      color: #000;
-    }
-
-    header {
-      background-color: #007BFF;
-      color: white;
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .menu-icon {
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    .sidebar {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background-color: #007BFF;
-      overflow-x: hidden;
-      transition: 0.3s;
-      padding-top: 60px;
-      z-index: 1000;
-    }
-
-    .sidebar a {
-      padding: 10px 20px;
-      text-decoration: none;
-      font-size: 18px;
-      color: white;
-      display: block;
-      transition: 0.3s;
-    }
-
-    .sidebar a:hover {
-      background-color: #0056b3;
-    }
-
-    .sidebar .admin-link {
-      position: absolute;
-      bottom: 20px;
-      width: 100%;
-    }
-
-    .content {
-      padding: 2rem;
-    }
-  </style>
+  <title>My Hostel</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <h1>My Hostel</h1>
-  <span class="menu-icon" onclick="openMenu()">&#9776;</span>
-</header>
+  <header>
+    <h1>My Hostel</h1>
+    <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+  </header>
 
-<div id="sidebar" class="sidebar">
-  <a href="#">Homepage</a>
-  <a href="#">About</a>
-  <a href="#">Room</a>
-  <a href="#">Booking</a>
-  <a href="#">Contact</a>
-  <div class="admin-link">
-    <a href="#">Administrator</a>
+  <div id="sidebar" class="sidebar">
+    <a href="#">Homepage</a>
+    <a href="#">About</a>
+    <a href="#">Room</a>
+    <a href="#">Booking</a>
+    <a href="#">Contact</a>
+    <div class="admin-link">
+      <a href="#">Administrator</a>
+    </div>
   </div>
-</div>
 
-<div class="content">
-  <h2>Welcome to Our Hostel</h2>
-  <p>Experience comfort and convenience at our hostel. Book your stay today!</p>
-</div>
+  <div class="content">
+    <h2>Welcome to My Hostel</h2>
+    <p>Comfort, convenience, and budget-friendly lodging. Book now and enjoy your stay!</p>
+  </div>
 
-<script>
-  function openMenu() {
-    const sidebar = document.getElementById("sidebar");
-    if (sidebar.style.width === "33.33%") {
-      sidebar.style.width = "0";
-    } else {
-      sidebar.style.width = "33.33%";
+  <script>
+    function toggleMenu() {
+      const sidebar = document.getElementById("sidebar");
+      if (sidebar.style.width === "33.33%") {
+        sidebar.style.width = "0";
+      } else {
+        sidebar.style.width = "33.33%";
+      }
     }
-  }
-</script>
+  </script>
 
 </body>
 </html>
