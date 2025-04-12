@@ -1,230 +1,72 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DeeKen Hostel</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }body, html {
-  height: 100%;
-  scroll-behavior: smooth;
-  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
-  background-attachment: fixed;
-}
-
-header {
-  background: linear-gradient(to right, #a8dadc, #457b9d);
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.logo {
-  font-family: 'Brush Script MT', cursive;
-  font-size: 2.2rem;
-  color: white;
-  letter-spacing: 1px;
-}
-
-.menu-toggle {
-  font-size: 2rem;
-  cursor: pointer;
-  color: white;
-}
-
-.side-menu {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  top: 0;
-  right: 0;
-  background-color: rgba(255, 255, 255, 0.95);
-  overflow-x: hidden;
-  transition: 0.3s;
-  padding-top: 150px;
-  z-index: 999;
-  box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-}
-
-.side-menu a {
-  padding: 12px 30px;
-  display: block;
-  font-size: 1.1rem;
-  text-decoration: none;
-  color: #333;
-}
-
-.side-menu a:hover,
-.side-menu a.active {
-  background-color: #e0f2f1;
-  font-weight: bold;
-  border-left: 4px solid #457b9d;
-}
-
-.auth-form {
-  padding: 1.5rem 2rem;
-  border-top: 1px solid #ccc;
-  background-color: #f9f9f9;
-  margin: 2rem;
-  border-radius: 8px;
-}
-
-.auth-form h3 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: #333;
-}
-
-.auth-form input {
-  display: block;
-  margin-bottom: 1rem;
-  padding: 0.6rem;
-  width: 100%;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.auth-form button {
-  padding: 0.6rem 1rem;
-  background-color: #457b9d;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.main-content {
-  padding-top: 100px;
-}
-
-.section-box {
-  margin: 2rem;
-  padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.section-box h1 {
-  color: #1d3557;
-  margin-bottom: 1rem;
-}
-
-.section-box p,
-.section-box ul {
-  color: #333;
-  font-size: 1.1rem;
-}
-
-.footer {
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 3rem;
-}
-
-@media (max-width: 768px) {
-  .section-box {
-    margin: 1rem;
-    padding: 1rem;
-  }
-  .side-menu {
-    width: 0;
-    padding-top: 100px;
-  }
-  .side-menu.open {
-    width: 70%;
-  }
-}
-
-@media (min-width: 769px) {
-  .side-menu.open {
-    width: 28%;
-  }
-}
-
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="logo">DeeKen Hostel</div>
-    <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
-  </header>  <div id="sideMenu" class="side-menu">
-    <a href="#" class="active" onclick="toggleMenu()">Homepage</a>
-    <a href="#about">About</a>
-    <a href="#rooms">Rooms</a>
-    <a href="#booking">Booking</a>
-    <a href="#contact">Contact</a>
-    <div class="auth-form">
-      <h3>Owner Login</h3>
-      <input type="text" placeholder="Username" />
-      <input type="password" placeholder="Password" />
-      <button>Login</button>
-    </div>
-  </div>  <div class="main-content" onclick="closeMenu()">
-    <div class="section-box">
+
+<header>
+  <div class="logo">DeeKen Hostel</div>
+  <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+</header>
+
+<nav id="sideMenu" class="side-menu">
+  <a href="index.html" class="active">Homepage</a>
+  <a href="about.html">About</a>
+  <a href="#rooms">Rooms</a>
+  <a href="#booking">Booking</a>
+  <a href="#contact">Contact</a>
+  <div class="auth-form">
+    <h3>Owner Login</h3>
+    <input type="text" placeholder="Username" />
+    <input type="password" placeholder="Password" />
+    <button>Login</button>
+  </div>
+</nav>
+
+<main class="main home" onclick="closeMenu()">
+  <section class="main-content">
+    <div class="blur-box">
       <h1>Welcome to Caramoan!</h1>
-      <p>Explore the stunning beaches, go island hopping, try local seafood delicacies, and enjoy nature adventures like caving and trekking!</p>
-    </div><div class="section-box">
-  <h1>Island Hopping</h1>
-  <ul>
-    <li>Matukad Island - mystical lagoon</li>
-    <li>Lahos Island - twin white beaches</li>
-    <li>Manlawi Sandbar - wide sandbar experience</li>
-  </ul>
-</div>
+      <p>Discover the best experiences and natural wonders in Caramoan.</p>
+    </div>
+    <div class="blur-box">
+      <h2>Things to Do</h2>
+      <ul>
+        <li>🏝️ Island Hopping at Matukad, Lahos, and Manlawi</li>
+        <li>🌊 Relaxing on Cotivas and Lahuy Beaches</li>
+        <li>🧗 Rock Climbing and Spelunking</li>
+        <li>⛪ Cultural Visit to the Grotto and Old Churches</li>
+        <li>🍽️ Enjoy Bicolano cuisine like Laing and Kinunot</li>
+      </ul>
+    </div>
+  </section>
+</main>
 
-<div class="section-box">
-  <h1>Adventure Activities</h1>
-  <ul>
-    <li>Rock climbing on Matukad cliffs</li>
-    <li>Spelunking in Omang and Culapnit Caves</li>
-    <li>Kayaking and beach camping</li>
-  </ul>
-</div>
+<footer>
+  &copy; 2025 DeeKen Hostel. All rights reserved.
+</footer>
 
-<div class="section-box">
-  <h1>Cultural and Food Experience</h1>
-  <ul>
-    <li>Visit Our Lady of the Holy Rosary Grotto</li>
-    <li>Historic St. Michael Church</li>
-    <li>Try Laing, Kinunot, and fresh seafood</li>
-  </ul>
-</div>
+<script>
+  const menu = document.getElementById("sideMenu");
+  function toggleMenu() {
+    menu.classList.toggle("open");
+  }
+  function closeMenu() {
+    menu.classList.remove("open");
+  }
 
-  </div>  <div class="footer">
-    &copy; 2025 DeeKen Hostel. All rights reserved.
-  </div>  <script>
-    const menu = document.getElementById("sideMenu");
-    const links = document.querySelectorAll(".side-menu a");
-
-    function toggleMenu() {
-      menu.classList.toggle("open");
+  // Highlight current page
+  const links = document.querySelectorAll('.side-menu a');
+  links.forEach(link => {
+    if (link.href === window.location.href) {
+      link.classList.add('active');
     }
+  });
+</script>
 
-    function closeMenu() {
-      if (menu.classList.contains("open")) {
-        menu.classList.remove("open");
-      }
-    }
-
-    // Highlight the current section (works best when full pages are used)
-    links.forEach(link => {
-      link.addEventListener("click", () => {
-        links.forEach(el => el.classList.remove("active"));
-        link.classList.add("active");
-      });
-    });
-  </script></body>
+</body>
 </html>
