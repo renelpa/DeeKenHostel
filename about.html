@@ -1,80 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About - DeeKen Hostel</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About DeeKen Hostel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header>
-  <div class="logo">DeeKen Hostel</div>
-  <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
-</header>
-
-<nav id="sideMenu" class="side-menu">
-  <a href="index.html">Homepage</a>
-  <a href="about.html" class="active">About</a>
-  <a href="#rooms">Rooms</a>
-  <a href="#booking">Booking</a>
-  <a href="#contact">Contact</a>
-  <div class="auth-form">
-    <h3>Owner Login</h3>
-    <input type="text" placeholder="Username" />
-    <input type="password" placeholder="Password" />
-    <button>Login</button>
-  </div>
-</nav>
-
-<main class="main about" onclick="closeMenu()">
-  <section class="main-content">
-    <div class="blur-box">
-      <h1>About DeeKen Hostel</h1>
-      <p>Founded in the heart of Caramoan, DeeKen Hostel offers cozy accommodations, breathtaking views, and a gateway to unforgettable adventures.</p>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">DeeKen Hostel</div>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="booking.html">Booking</a>
+        <a href="contact.html">Contact</a>
     </div>
-    <div class="blur-box">
-      <h2>Our Mission</h2>
-      <p>To give every guest a warm Bicolano welcome, an affordable stay, and a memorable experience through nature and hospitality.</p>
+
+    <!-- Dash Line Icon to Open Sidebar -->
+    <div class="menu-icon" onclick="toggleSidebar()">
+        &#9776;
     </div>
-    <div class="blur-box">
-      <h2>Our Vision</h2>
-      <p>To be one of the top beach hostels in the Bicol Region, known for comfort, cleanliness, and community connection.</p>
+
+    <!-- Main Content -->
+    <div class="content">
+        <header>
+            <h1>About DeeKen Hostel</h1>
+        </header>
+
+        <section class="about-section">
+            <p>DeeKen Hostel was established in 2023 to provide affordable and comfortable lodging for travelers exploring Caramoan. We pride ourselves on our warm hospitality, modern amenities, and proximity to the stunning natural attractions that Caramoan has to offer.</p>
+            <img src="hostel-room.jpg" alt="Hostel Room">
+        </section>
     </div>
-    <div class="blur-box">
-      <h2>Why Stay With Us?</h2>
-      <ul>
-        <li>🌅 Beachfront Location</li>
-        <li>🛏️ Clean & Cozy Rooms</li>
-        <li>🍽️ Local Food Available</li>
-        <li>🛵 Motorbike Rentals</li>
-        <li>👨‍👩‍👧‍👦 Friendly Local Staff</li>
-      </ul>
-    </div>
-  </section>
-</main>
 
-<footer>
-  &copy; 2025 DeeKen Hostel. All rights reserved.
-</footer>
+    <footer>
+        <p>© 2025 DeeKen Hostel. All rights reserved.</p>
+    </footer>
 
-<script>
-  const menu = document.getElementById("sideMenu");
-  function toggleMenu() {
-    menu.classList.toggle("open");
-  }
-  function closeMenu() {
-    menu.classList.remove("open");
-  }
-
-  // Highlight current page
-  const links = document.querySelectorAll('.side-menu a');
-  links.forEach(link => {
-    if (link.href === window.location.href) {
-      link.classList.add('active');
-    }
-  });
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
