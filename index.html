@@ -1,222 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeeKen Hostel</title>
-    <style>
-        /* Basic Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DeeKen Hostel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/e/e3/Caramoan_Paradise.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: url('https://via.placeholder.com/1500x800.png?text=Sea+and+Mountains') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            height: 100vh;
-            padding-top: 50px;
-        }
+    header {
+      background-color: #0099cc;
+      padding: 20px;
+      font-weight: bold;
+      font-size: 24px;
+      color: white;
+    }
 
-        /* Header */
-        header {
-            background-color: lightblue;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: bold;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-        }
+    footer {
+      background-color: #222;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      color: #ccc;
+    }
 
-        header h1 {
-            margin: 0;
-        }
+    .menu-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+    }
 
-        /* Menu Button */
-        .menu-btn {
-            font-size: 30px;
-            cursor: pointer;
-            display: none;
-        }
+    .content {
+      padding: 100px 20px 60px;
+      max-width: 800px;
+      margin: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+    }
 
-        /* Sidebar */
-        #sidebar {
-            position: fixed;
-            top: 0;
-            right: -23%;
-            width: 23%;
-            height: 100%;
-            background-color: #333;
-            padding-top: 50px;
-            transition: right 0.3s ease;
-            box-shadow: -3px 0px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        #sidebar a {
-            display: block;
-            padding: 15px;
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-        }
-
-        #sidebar a:hover {
-            background-color: #555;
-        }
-
-        #sidebar a.active {
-            background-color: #007BFF;
-        }
-
-        /* Content Area */
-        .content {
-            margin-top: 100px;
-            padding: 20px;
-        }
-
-        .content h2 {
-            margin-top: 20px;
-            font-size: 30px;
-        }
-
-        .content p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .content ul {
-            padding-left: 20px;
-        }
-
-        .content ul li {
-            margin-bottom: 10px;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-
-        /* Media Queries */
-        @media (max-width: 768px) {
-            .menu-btn {
-                display: block;
-            }
-        }
-    </style>
+    h2 {
+      margin-top: 0;
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>DeeKen Hostel</h1>
-    <div class="menu-btn" onclick="toggleSidebar()">&#9776;</div>
-</header>
+  <header>
+    DeeKen Hostel
+    <div class="menu-btn">&#9776;</div>
+  </header>
 
-<!-- Sidebar Menu -->
-<div id="sidebar">
-    <a href="index.html" id="home-link" class="active">Home</a>
-    <a href="about.html" id="about-link">About</a>
-    <a href="rooms.html" id="rooms-link">Rooms</a>
-    <a href="booking.html" id="booking-link">Booking</a>
-    <a href="contact.html" id="contact-link">Contact</a>
-</div>
+  <div class="content">
+    <h2>I Love Caramoan</h2>
+    <p>Caramoan is a hidden paradise in the Philippines known for its untouched islands, white-sand beaches, towering limestone cliffs, and crystal-clear waters. It’s a perfect destination for travelers who love nature, serenity, and adventure.</p>
 
-<!-- Main Content -->
-<div class="content">
-    <h2>Welcome to DeeKen Hostel!</h2>
-    <p>Located in the picturesque town of Caramoan, DeeKen Hostel offers a cozy and affordable stay with a view of the sea and mountains. Whether you're here for a short vacation or a long getaway, we provide the perfect place to relax and enjoy the beauty of nature.</p>
-
-    <h2>About DeeKen Hostel</h2>
-    <p>Our hostel is built with comfort and convenience in mind, offering modern amenities and a friendly atmosphere. DeeKen Hostel is ideal for solo travelers, families, and groups looking for an unforgettable experience in Caramoan. With a focus on sustainability, we prioritize eco-friendly practices to ensure that our guests can enjoy their stay without harming the environment.</p>
-
-    <h2>Our Location</h2>
-    <p>DeeKen Hostel is located in the heart of Caramoan, a beautiful town famous for its natural wonders. Surrounded by pristine beaches, crystal-clear waters, and towering limestone cliffs, Caramoan is the perfect destination for nature lovers and adventure seekers.</p>
-    <p>Some of the nearby attractions include:</p>
+    <h3>Things to Do:</h3>
     <ul>
-        <li><strong>Matukad Island:</strong> A hidden gem with stunning beaches and lush greenery.</li>
-        <li><strong>Lahos Island:</strong> Known for its unique sandbars and crystal-clear waters.</li>
-        <li><strong>Cagua Volcano:</strong> A challenging hike with breathtaking views from the top.</li>
-        <li><strong>Caramoan National Park:</strong> A haven for wildlife enthusiasts and hikers.</li>
+      <li>Island Hopping (Matukad, Lahos, and more)</li>
+      <li>Snorkeling and Scuba Diving</li>
+      <li>Rock Climbing and Hiking</li>
+      <li>Camping on the beach</li>
+      <li>Kayaking and Paddleboarding</li>
+      <li>Visit local markets and eat Bicolano cuisine</li>
     </ul>
 
-    <h2>Hostel Facilities</h2>
-    <p>At DeeKen Hostel, we offer a range of facilities to make your stay as comfortable as possible:</p>
+    <h3>Places to Visit:</h3>
     <ul>
-        <li><strong>Free Wi-Fi:</strong> Stay connected throughout your stay.</li>
-        <li><strong>24/7 Reception:</strong> Our friendly staff is always available to assist you.</li>
-        <li><strong>Air-Conditioned Rooms:</strong> Comfortable rooms with modern amenities.</li>
-        <li><strong>Common Areas:</strong> A social space to meet other travelers and relax.</li>
-        <li><strong>Kitchen Facilities:</strong> Cook your own meals or enjoy our delicious breakfast options.</li>
+      <li>Matukad Island</li>
+      <li>Lahos Island</li>
+      <li>Tayak Hill and Lagoon</li>
+      <li>Our Lady of Peace Grotto</li>
+      <li>Caramoan National Park</li>
     </ul>
+  </div>
 
-    <h2>Activities and Adventure</h2>
-    <p>Caramoan is an adventure lover's paradise, and DeeKen Hostel is the perfect base for exploring the area. Here are some activities you can enjoy:</p>
-    <ul>
-        <li><strong>Island Hopping:</strong> Explore nearby islands, including Matukad and Lahos.</li>
-        <li><strong>Snorkeling and Diving:</strong> Discover the vibrant marine life in the clear waters of Caramoan.</li>
-        <li><strong>Hiking:</strong> Trek through the stunning Caramoan National Park or conquer Cagua Volcano.</li>
-        <li><strong>Kayaking:</strong> Paddle through the peaceful waters and enjoy the surrounding scenery.</li>
-        <li><strong>Historical Sites:</strong> Visit the Church of St. Michael the Archangel and other landmarks.</li>
-    </ul>
-
-    <h2>Why Choose DeeKen Hostel?</h2>
-    <p>DeeKen Hostel isn't just a place to stay—it's an experience. With our focus on providing a comfortable, sustainable, and friendly atmosphere, we ensure that your stay in Caramoan is unforgettable. Whether you're here for relaxation, adventure, or exploration, DeeKen Hostel is the perfect place to call home during your time in Caramoan.</p>
-</div>
-
-<footer>
-    <p>&copy; 2025 DeeKen Hostel. All rights reserved.</p>
-</footer>
-
-<script>
-    // Toggle sidebar visibility
-    function toggleSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        if (sidebar.style.right === '0px') {
-            sidebar.style.right = '-23%';
-        } else {
-            sidebar.style.right = '0px';
-        }
-    }
-
-    // Close sidebar if clicked outside or on menu button
-    window.onclick = function(event) {
-        const sidebar = document.getElementById('sidebar');
-        const menuBtn = document.querySelector('.menu-btn');
-        const sidebarLinks = document.querySelectorAll('#sidebar a');
-
-        if (!sidebar.contains(event.target) && event.target !== menuBtn) {
-            sidebar.style.right = '-23%';
-        }
-
-        // Highlight the active page
-        sidebarLinks.forEach(link => {
-            if (link.classList.contains('active')) {
-                link.classList.remove('active');
-            }
-        });
-
-        // Add 'active' class to the clicked link
-        if (event.target.tagName === 'A') {
-            event.target.classList.add('active');
-        }
-    }
-</script>
+  <footer>
+    &copy; 2025 DeeKen Hostel. All rights reserved.
+  </footer>
 
 </body>
 </html>
