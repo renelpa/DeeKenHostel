@@ -13,6 +13,7 @@
   height: 100%;
   scroll-behavior: smooth;
   background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
+  background-attachment: fixed;
 }
 
 header {
@@ -50,21 +51,24 @@ header {
   background-color: rgba(255, 255, 255, 0.95);
   overflow-x: hidden;
   transition: 0.3s;
-  padding-top: 120px;
+  padding-top: 150px;
   z-index: 999;
   box-shadow: -2px 0 5px rgba(0,0,0,0.2);
 }
 
 .side-menu a {
-  padding: 15px 40px;
+  padding: 12px 30px;
   display: block;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   text-decoration: none;
   color: #333;
 }
 
-.side-menu a:hover {
-  background-color: #f4f4f4;
+.side-menu a:hover,
+.side-menu a.active {
+  background-color: #e0f2f1;
+  font-weight: bold;
+  border-left: 4px solid #457b9d;
 }
 
 .auth-form {
@@ -130,6 +134,26 @@ header {
   margin-top: 3rem;
 }
 
+@media (max-width: 768px) {
+  .section-box {
+    margin: 1rem;
+    padding: 1rem;
+  }
+  .side-menu {
+    width: 0;
+    padding-top: 100px;
+  }
+  .side-menu.open {
+    width: 70%;
+  }
+}
+
+@media (min-width: 769px) {
+  .side-menu.open {
+    width: 28%;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -137,7 +161,7 @@ header {
     <div class="logo">DeeKen Hostel</div>
     <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
   </header>  <div id="sideMenu" class="side-menu">
-    <a href="#" onclick="toggleMenu()">Homepage</a>
+    <a href="#" class="active" onclick="toggleMenu()">Homepage</a>
     <a href="#about">About</a>
     <a href="#rooms">Rooms</a>
     <a href="#booking">Booking</a>
@@ -183,15 +207,24 @@ header {
     &copy; 2025 DeeKen Hostel. All rights reserved.
   </div>  <script>
     const menu = document.getElementById("sideMenu");
+    const links = document.querySelectorAll(".side-menu a");
 
     function toggleMenu() {
-      menu.style.width = menu.style.width === "33.33%" ? "0" : "33.33%";
+      menu.classList.toggle("open");
     }
 
     function closeMenu() {
-      if (menu.style.width === "33.33%") {
-        menu.style.width = "0";
+      if (menu.classList.contains("open")) {
+        menu.classList.remove("open");
       }
     }
+
+    // Highlight the current section (works best when full pages are used)
+    links.forEach(link => {
+      link.addEventListener("click", () => {
+        links.forEach(el => el.classList.remove("active"));
+        link.classList.add("active");
+      });
+    });
   </script></body>
 </html>
