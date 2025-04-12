@@ -1,91 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DeeKen Hostel</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/e/e3/Caramoan_Paradise.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-    }
-
-    header {
-      background-color: #0099cc;
-      padding: 20px;
-      font-weight: bold;
-      font-size: 24px;
-      color: white;
-    }
-
-    footer {
-      background-color: #222;
-      text-align: center;
-      padding: 10px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      color: #ccc;
-    }
-
-    .menu-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 28px;
-      cursor: pointer;
-    }
-
-    .content {
-      padding: 100px 20px 60px;
-      max-width: 800px;
-      margin: auto;
-      background-color: rgba(0, 0, 0, 0.5);
-      border-radius: 10px;
-    }
-
-    h2 {
-      margin-top: 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeeKen Hostel - Homepage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <header>
-    DeeKen Hostel
-    <div class="menu-btn">&#9776;</div>
-  </header>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">DeeKen Hostel</div>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="booking.html">Booking</a>
+        <a href="contact.html">Contact</a>
+    </div>
 
-  <div class="content">
-    <h2>I Love Caramoan</h2>
-    <p>Caramoan is a hidden paradise in the Philippines known for its untouched islands, white-sand beaches, towering limestone cliffs, and crystal-clear waters. It’s a perfect destination for travelers who love nature, serenity, and adventure.</p>
+    <!-- Dash Line Icon to Open Sidebar -->
+    <div class="menu-icon" onclick="toggleSidebar()">
+        &#9776;
+    </div>
 
-    <h3>Things to Do:</h3>
-    <ul>
-      <li>Island Hopping (Matukad, Lahos, and more)</li>
-      <li>Snorkeling and Scuba Diving</li>
-      <li>Rock Climbing and Hiking</li>
-      <li>Camping on the beach</li>
-      <li>Kayaking and Paddleboarding</li>
-      <li>Visit local markets and eat Bicolano cuisine</li>
-    </ul>
+    <!-- Main Content -->
+    <div class="content">
+        <header>
+            <h1>I Love Caramoan</h1>
+            <p>Explore the beauty and adventure of Caramoan, Camarines Sur!</p>
+        </header>
 
-    <h3>Places to Visit:</h3>
-    <ul>
-      <li>Matukad Island</li>
-      <li>Lahos Island</li>
-      <li>Tayak Hill and Lagoon</li>
-      <li>Our Lady of Peace Grotto</li>
-      <li>Caramoan National Park</li>
-    </ul>
-  </div>
+        <div class="blur-box">
+            <h2>Things to Do in Caramoan</h2>
+            <ul>
+                <li><strong>Island Hopping</strong> – Visit Manlawi Sandbar, Cagbalinad Island, Matukad Island.</li>
+                <li><strong>Caving</strong> – Explore Lahuy Cave, Sabitang Laya Cave.</li>
+                <li><strong>Snorkeling</strong> – Discover marine life at Gota Beach, Sabitang Laya.</li>
+                <li><strong>Hiking Mt. Caglago</strong> – Trek to the peak with views of the islands.</li>
+                <li><strong>Rock Formation Tours</strong> – See Matukad Rock, Sabitang Laya formations.</li>
+                <li><strong>Local Culture & Cuisine</strong> – Enjoy Bicol Express, Laing, and fresh seafood.</li>
+                <li><strong>Kayaking & Paddleboarding</strong> – In Bikal River and Matukad Island.</li>
+                <li><strong>Visit the Caramoan National Park</strong> – Explore nature and wildlife.</li>
+            </ul>
+        </div>
+    </div>
 
-  <footer>
-    &copy; 2025 DeeKen Hostel. All rights reserved.
-  </footer>
+    <footer>
+        <p>© 2025 DeeKen Hostel. All rights reserved.</p>
+    </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
