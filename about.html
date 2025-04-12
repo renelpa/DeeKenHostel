@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | DeeKen Hostel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">DeeKen Hostel</div>
+    <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+  </header>
+
+  <div id="sideMenu" class="side-menu">
+    <a href="index.html">Homepage</a>
+    <a href="about.html" class="active">About</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#booking">Booking</a>
+    <a href="#contact">Contact</a>
+    <div class="auth-form">
+      <h3>Owner Login</h3>
+      <input type="text" placeholder="Username">
+      <input type="password" placeholder="Password">
+      <button>Login</button>
+    </div>
+  </div>
+
+  <main onclick="closeMenu()">
+    <section class="section-box">
+      <h1>About DeeKen Hostel</h1>
+      <p>DeeKen Hostel is a serene escape located in the beautiful town of Caramoan. Built with comfort and coastal charm in mind, we offer an affordable and relaxing place to stay for tourists, adventurers, and families.</p>
+    </section>
+
+    <section class="section-box">
+      <h2>Our Mission</h2>
+      <p>To provide every guest a warm and memorable experience with personalized service, comfort, and genuine hospitality.</p>
+      <h2>Our Vision</h2>
+      <p>To be the most loved local hostel in Caramoan, where guests return for peace, nature, and Filipino warmth.</p>
+    </section>
+
+    <section class="section-box">
+      <h2>Why Choose Us?</h2>
+      <ul>
+        <li>Beachfront access</li>
+        <li>Island hopping tour assistance</li>
+        <li>Affordable and clean rooms</li>
+        <li>Free breakfast and WiFi</li>
+        <li>Local staff with a heart for service</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    &copy; 2025 DeeKen Hostel. All rights reserved.
+  </footer>
+
+  <script>
+    const menu = document.getElementById("sideMenu");
+    const links = document.querySelectorAll(".side-menu a");
+
+    function toggleMenu() {
+      menu.classList.toggle("open");
+    }
+
+    function closeMenu() {
+      if (menu.classList.contains("open")) {
+        menu.classList.remove("open");
+      }
+    }
+
+    links.forEach(link => {
+      link.addEventListener("click", () => {
+        links.forEach(el => el.classList.remove("active"));
+        link.classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>
