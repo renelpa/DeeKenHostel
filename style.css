@@ -1,134 +1,130 @@
-/* Reset & Base Styles */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body, html {
-  font-family: 'Arial', sans-serif;
-  height: 100%;
-}
-a {
-  text-decoration: none;
-}
-ul {
-  list-style: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Header */
-header {
-  background-color: #b2e0f7;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-}
-.logo {
-  font-family: 'Cursive';
-  font-size: 1.8rem;
-  color: #003f5c;
-}
-.menu-toggle {
-  font-size: 2rem;
-  cursor: pointer;
+body {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background-image: url('https://images.unsplash.com/photo-1555529771-c4d88f9c8f7e');
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
 }
 
-/* Sidebar Menu */
-.side-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.98);
-  overflow-x: hidden;
-  transition: 0.3s;
-  padding-top: 90px;
-  z-index: 999;
-}
-.side-menu.open {
-  width: 28%;
-}
-.side-menu a {
-  display: block;
-  padding: 12px 30px;
-  color: #333;
-  font-size: 1rem;
-  transition: background 0.3s;
-}
-.side-menu a:hover,
-.side-menu a.active {
-  background: #dff3ff;
-  font-weight: bold;
+.content {
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
 }
 
-/* Login Form */
-.auth-form {
-  padding: 1rem 2rem;
-  border-top: 1px solid #ccc;
-  margin-top: 1rem;
-}
-.auth-form input {
-  width: 100%;
-  padding: 0.5rem;
-  margin: 0.5rem 0;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-.auth-form button {
-  padding: 0.5rem 1rem;
-  background: #4fc3f7;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-}
-.auth-form h3 {
-  margin-bottom: 0.5rem;
+header h1 {
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-/* Main Content */
-.main {
-  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center / cover;
-  background-attachment: fixed;
-  min-height: 100vh;
-  padding-top: 100px;
-  color: white;
-  text-shadow: 1px 1px 2px black;
+header p {
+    font-size: 1.5em;
+    text-align: center;
 }
-.main-content {
-  padding: 2rem;
-  max-width: 900px;
-  margin: auto;
-}
+
 .blur-box {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(6px);
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  color: #fff;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
-/* Footer */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
 footer {
-  background: rgba(0,0,0,0.7);
-  color: #fff;
-  text-align: center;
-  padding: 1rem;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
 }
 
-/* Responsive */
-@media screen and (max-width: 768px) {
-  .side-menu.open {
-    width: 70%;
-  }
-  .blur-box {
-    padding: 1rem;
-  }
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+}
+
+.sidebar .logo {
+    font-size: 1.8em;
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    margin: 10px 0;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+.sidebar a:hover {
+    color: #ff6f61;
+}
+
+.menu-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+form input, form textarea, form select, form button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+form button {
+    background-color: #ff6f61;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #ff3b2f;
+}
+
+.rooms-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.room {
+    text-align: center;
+    width: 30%;
+}
+
+.room img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
 }
