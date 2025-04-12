@@ -33,7 +33,7 @@
       position: fixed;
       top: 0;
       right: 0;
-      background-color: #004080; /* Darker blue */
+      background-color: #004080;
       overflow-x: hidden;
       transition: 0.3s;
       padding-top: 60px;
@@ -144,7 +144,7 @@
     </div>
   </div>
 
-  <div class="content">
+  <div class="content" onclick="hideSidebar()">
     <h2>Welcome to My Hostel</h2>
     <p>Comfort, convenience, and budget-friendly lodging. Book now and enjoy your stay!</p>
   </div>
@@ -167,9 +167,20 @@
   </div>
 
   <script>
+    let sidebarOpen = false;
+
     function toggleMenu() {
       const sidebar = document.getElementById("sidebar");
-      sidebar.style.width = sidebar.style.width === "33.33%" ? "0" : "33.33%";
+      sidebarOpen = !sidebarOpen;
+      sidebar.style.width = sidebarOpen ? "33.33%" : "0";
+    }
+
+    function hideSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      if (sidebarOpen) {
+        sidebar.style.width = "0";
+        sidebarOpen = false;
+      }
     }
 
     function openLogin() {
@@ -180,6 +191,7 @@
       document.getElementById("loginModal").style.display = "none";
     }
 
+    // Close modal if clicked outside the login box
     window.onclick = function(event) {
       const modal = document.getElementById("loginModal");
       if (event.target == modal) {
