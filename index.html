@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeeKen Hostel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .menu-transition {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .login-btn {
+      background-color: #00aaff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+    }
+
+    .login-btn:hover {
+      background-color: #0077cc;
+    }
+
+    /* Position Login button in the top-right corner */
+    .login-btn-position {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body class="text-white">
+
+  <div class="overlay min-h-screen w-full">
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center p-4 bg-black bg-opacity-50 relative z-50">
+      <h1 class="text-2xl font-bold">DeeKen Hostel</h1>
+
+      <!-- Burger Menu Button -->
+      <button id="menuBtn"
+        class="md:hidden flex flex-col justify-between w-8 h-6 focus:outline-none"
+        aria-label="Toggle menu"
+        aria-expanded="false">
+        <span class="block w-full h-0.5 bg-white"></span>
+        <span class="block w-full h-0.5 bg-white"></span>
+        <span class="block w-full h-0.5 bg-white"></span>
+      </button>
+
+      <!-- Desktop Nav -->
+      <ul class="hidden md:flex space-x-6 text-lg">
+        <li><a href="#home" class="hover:underline">Home</a></li>
+        <li><a href="#about" class="hover:underline">About Us</a></li>
+        <li><a href="#rooms" class="hover:underline">Rooms</a></li>
+        <li><a href="#amenities" class="hover:underline">Amenities</a></li>
+        <li><a href="#contact" class="hover:underline">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Login Button (fixed to top-right) -->
+    <button class="login-btn login-btn-position" onclick="window.location.href='login.html'">
+      Login
+    </button>
+
+    <!-- Sidebar for Mobile -->
+    <div id="mobileMenu" class="fixed top-0 right-0 h-full w-64 bg-black bg-opacity-90 text-white transform translate-x-full menu-transition z-40">
+      <ul class="flex flex-col p-6 space-y-6 text-lg">
+        <li><a href="#home" class="menu-link">Home</a></li>
+        <li><a href="#about" class="menu-link">About Us</a></li>
+        <li><a href="#rooms" class="menu-link">Rooms</a></li>
+        <li><a href="#amenities" class="menu-link">Amenities</a></li>
+        <li><a href="#contact" class="menu-link">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Content Sections -->
+    <section id="home" class="h-screen flex items-center justify-center text-center px-4">
+      <div>
+        <h2 class="text-4xl font-bold mb-4">Welcome to DeeKen Hostel</h2>
+        <p class="text-lg">Where the sea breeze meets your stay. Affordable, beautiful, unforgettable.</p>
+      </div>
+    </section>
+
+    <section id="about" class="h-screen flex items-center justify-center text-center px-4 bg-black bg-opacity-60">
+      <div>
+        <h2 class="text-3xl font-bold mb-4">About Us</h2>
+        <p class="text-lg max-w-xl">DeeKen Hostel is a beachside haven located in Caramoan. We offer comfort, convenience, and a vibe you'll love.</p>
+      </div>
+    </section>
+
+    <section id="rooms" class="h-screen flex items-center justify-center text-center px-4 bg-black bg-opacity-60">
+      <div>
+        <h2 class="text-3xl font-bold mb-4">Rooms</h2>
+        <p class="text-lg max-w-xl">Choose from private suites, shared dorms, or family rooms. Every room comes with a sea view.</p>
+      </div>
+    </section>
+
+    <section id="amenities" class="h-screen flex items-center justify-center text-center px-4 bg-black bg-opacity-60">
+      <div>
+        <h2 class="text-3xl font-bold mb-4">Amenities</h2>
+        <p class="text-lg max-w-xl">Free WiFi, breakfast, lounge areas, tours, and more — all designed to make your stay unforgettable.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="h-screen flex items-center justify-center text-center px-4 bg-black bg-opacity-60">
+      <div>
+        <h2 class="text-3xl font-bold mb-4">Contact Us</h2>
+        <p class="text-lg max-w-xl">Get in touch at <a href="mailto:deekenhostel@example.com" class="underline">deekenhostel@example.com</a>. We can't wait to host you!</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuLinks = document.querySelectorAll('.menu-link');
+
+    function toggleMenu() {
+      const isOpen = !mobileMenu.classList.contains('translate-x-full');
+      mobileMenu.classList.toggle('translate-x-full');
+      menuBtn.setAttribute('aria-expanded', String(!isOpen));
+    }
+
+    menuBtn.addEventListener('click', toggleMenu);
+
+    // Close menu on link click
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('translate-x-full');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close menu on click outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+        mobileMenu.classList.add('translate-x-full');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+</body>
+</html>
